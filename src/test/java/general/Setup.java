@@ -3,6 +3,7 @@ package general;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -45,6 +46,7 @@ public final class Setup {
             getOptions().setCapability((String) getConfigProperties().getProperties().get(Property.STRING_TIMEOUTS),
                     getTimeouts());
             setDriver(new ChromeDriver(getOptions()));
+            setDriver(new ChromeDriver());
             getDriver().manage().window().maximize();
             initObject();
         } catch (Exception e) {
@@ -140,7 +142,13 @@ public final class Setup {
     }
 
     public static void openUrl(String url) {
-        getDriver().get(url);
+        try {
+            getDriver().get(url);
+        } catch (TimeoutException exception) {
+            System.out.println("Caught Timeout Error");
+            waitTime(5);
+            openUrl(url);
+        }
     }
 
     public static void setJsExecutor(JavascriptExecutor jsExecutor) {

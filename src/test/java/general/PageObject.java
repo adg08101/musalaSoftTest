@@ -141,7 +141,6 @@ public class PageObject {
     public void openURL(String app) {
         setUrlPath((String) Setup.getPropertyFromKey(Property.valueOf(app + "_URL")));
         Setup.openUrl(getUrlPath());
-
         print(getUrlPath());
         print(getFaker().number().randomNumber());
     }

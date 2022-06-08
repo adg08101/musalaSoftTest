@@ -16,15 +16,16 @@ public class ConfigProperties {
         getProperties().put(Property.TIMEOUT_IMPLICIT_KEY, "implicit");
         getProperties().put(Property.TIMEOUT_IMPLICIT_VALUE, 60);
         getProperties().put(Property.TIMEOUT_PAGELOAD_KEY, "pageLoad");
-        getProperties().put(Property.TIMEOUT_PAGELOAD_VALUE, 300000);
+        getProperties().put(Property.TIMEOUT_PAGELOAD_VALUE, 60);
         getProperties().put(Property.TIMEOUT_SCRIPT_KEY, "script");
-        getProperties().put(Property.TIMEOUT_SCRIPT_VALUE, 30000);
+        getProperties().put(Property.TIMEOUT_SCRIPT_VALUE, 60);
         getProperties().put(Property.STRING_TIMEOUTS, "timeouts");
         getProperties().put(Property.INT_SHORT_TIME, Long.parseLong("1500"));
         getProperties().put(Property.DEFAULT_PROPERTIES_FILE_PATH, "/defaultProperties.properties");
         getProperties().put(Property.STRING_DEFAULT_PROPERTIES, "defaultProperties");
         getProperties().put(Property.STRING_USER_NAME, "user_name");
         getProperties().put(Property.STRING_USER_PASSWORD, "user_password");
+        getProperties().put(Property.MUSALA_URL, "musala_url");
         getProperties().put(Property.GOHEAVY_URL, "goheavy_url");
         getProperties().put(Property.GOHEAVY_LOGIN_TYPE, "goheavy_login_type");
         getProperties().put(Property.GOHEAVY_USERNAME_FIELD, "goheavy_username_field");
