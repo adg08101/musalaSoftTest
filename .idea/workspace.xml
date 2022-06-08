@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f56abd-c64c-48de-86ec-7c70034bd911" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/general/ConfigProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/ConfigProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/general/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/Property.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/IndexStep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/page/IndexPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/incorrectEmails.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/general/GeneralSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/GeneralSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/defaultProperties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/defaultProperties.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/features/default/default.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/default/default.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/general/GeneralSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/general/GeneralSteps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/general/InputType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/general/InputType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/general/PageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/general/PageObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/general/Setup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/general/Setup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/general/WaitingObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/general/WaitingObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/defaultProperties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/defaultProperties.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/features/default/default.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/features/default/default.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,6 +59,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Owner\Desktop\MUSALA\musalaSoftTest\src\test\resources" />
       <recent name="C:\Users\Owner\eclipse-workspace\core\src\test\java\core\kahua\login" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">

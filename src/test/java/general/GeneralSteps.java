@@ -1,11 +1,8 @@
 package general;
 
-import core.goheavy.login.LoginStep;
+import core.musala.index.page.IndexPage;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import org.junit.Assert;
-
-import java.util.Locale;
 
 public class GeneralSteps extends PageObject {
     private String tempLogoffItems;
@@ -15,7 +12,17 @@ public class GeneralSteps extends PageObject {
         super();
     }
 
-    @Given("The user is in {string} view")
+    @Given("The user is at baseUrl")
+    public void the_user_is_at_base_url() {
+        /*if (view.toLowerCase(Locale.ROOT).contains("login")) {
+            LoginStep loginStep = new LoginStep();
+            loginStep.the_user_is_in_login_view(view);
+        }*/
+        IndexPage indexPage = new IndexPage();
+        Assert.assertTrue(indexPage.isIndexViewRendered());
+    }
+
+    /*@Given("The user is in {string} view")
     public void the_user_is_in_view(String view) {
         if (view.toLowerCase(Locale.ROOT).contains("login")) {
             LoginStep loginStep = new LoginStep();
@@ -51,5 +58,5 @@ public class GeneralSteps extends PageObject {
 
     public void setLogoffItems(String[] logoffItems) {
         this.logoffItems = logoffItems;
-    }
+    }*/
 }

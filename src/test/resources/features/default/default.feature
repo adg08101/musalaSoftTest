@@ -1,44 +1,29 @@
-#Author: ahmed.davila@generalsoftwareinc.com
-#Keywords Summary : Some Explanation on Keywords
-#Feature: Feature file.
-#Scenario:
+#Author: adavila86@gmail.com
+#Keywords Summary : MUSALA SOFT TESTS
+#Feature: SAMPLE FEATURE TEST CASE 1
+#Scenario: TEST CASE 1
 #------------------------------------------
-#1 Go to default URL Page
-#2. New line here
+#1	Visit http://www.musala.com/
+#2	Scroll down and go to ‘Contact Us’
+#3  Fill all required fields except email
+#4  Under email field enter string with wrong email format (e.g. test@test)
+#5  Click ‘Send’ button
+#6  Verify that error message ‘The e-mail address entered is invalid.’ appears
 #------------------------------------------
-#Given: Some precondition step
+#  Given: Visit http://www.musala.com/
 #------------------------------------------
-#1. Preconditions Here
-#2. Some more stuff here.
+#1. Preconditions
+#2. Visit http://www.musala.com/
 #------------------------------------------
-#When: Some key actions
-#Then: To observe outcomes or validation
-#------------------------------------------
-#1. Clicks on continue here.
-#------------------------------------------
-#And,But:
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for some table
-#Background: Given Any user is working
-#Sample Feature Definition Template
 
-Feature: Default main Feature
-  As a: User
-  I Want To: Go to <App> Login Page
-  So That: I can Log into <App>
+Feature: TEST CASE 1
 
   Background:
-  #  Given BackGround Conditions
+    Given The user is at baseUrl
 
   Scenario Outline: Main Default Scenario
-    Given The user is in "<view>" view
-    Then The user LogsIn with "<userName>" and "<password>"
-    Then The system saves user and project values
-    Then The user LogsOff
-    #Then Some more here
-    #When Some more here
-    #And Some more here
+    Given The user scrolls down to <"pageAnchor">
 
     Examples:
-      | view          | userName       | password       |
-      | Kahua Login   | kahua_username | kahua_password |
+      | pageAnchor |
+      | ContactUs  |
