@@ -3,7 +3,7 @@ package general;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -45,8 +45,15 @@ public final class Setup {
                     getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_VALUE));
             getOptions().setCapability((String) getConfigProperties().getProperties().get(Property.STRING_TIMEOUTS),
                     getTimeouts());
+            getOptions().addArguments("enable-automation");
+            // getOptions().addArguments("--headless");
+            getOptions().addArguments("--window-size=1920,1080");
+            getOptions().addArguments("--no-sandbox");
+            getOptions().addArguments("--disable-extensions");
+            getOptions().addArguments("--dns-prefetch-disable");
+            getOptions().addArguments("--disable-gpu");
+            getOptions().setPageLoadStrategy(PageLoadStrategy.NONE);
             setDriver(new ChromeDriver(getOptions()));
-            setDriver(new ChromeDriver());
             getDriver().manage().window().maximize();
             initObject();
         } catch (Exception e) {
@@ -142,13 +149,7 @@ public final class Setup {
     }
 
     public static void openUrl(String url) {
-        try {
-            getDriver().get(url);
-        } catch (TimeoutException exception) {
-            System.out.println("Caught Timeout Error");
-            waitTime(5);
-            openUrl(url);
-        }
+        getDriver().get(url);
     }
 
     public static void setJsExecutor(JavascriptExecutor jsExecutor) {

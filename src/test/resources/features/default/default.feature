@@ -22,7 +22,7 @@ Feature: TEST CASE 1
     Given The user is at baseUrl
 
   Scenario Outline: Main Default Scenario
-    Given The user scrolls down to <"pageAnchor">
+    Given The user scrolls down to "<pageAnchor>"
 
     Examples:
       | pageAnchor |

@@ -22,6 +22,12 @@ public class GeneralSteps extends PageObject {
         Assert.assertTrue(indexPage.isIndexViewRendered());
     }
 
+    @Given("The user scrolls down to {string}")
+    public void the_user_scrolls_down_to(String anchor) {
+        System.out.println(anchor);
+        Assert.assertTrue(true);
+    }
+
     /*@Given("The user is in {string} view")
     public void the_user_is_in_view(String view) {
         if (view.toLowerCase(Locale.ROOT).contains("login")) {

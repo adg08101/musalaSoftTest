@@ -37,6 +37,7 @@ public class IndexPage extends PageObject {
     }
 
     public boolean isIndexViewRendered() {
-        return getSiteLogo() != null && getDriver().getTitle() == this.title;
+        System.out.println(getSiteLogo());
+        return getSiteLogo() != null && getDriver().getTitle().equals(this.title);
     }
 }
