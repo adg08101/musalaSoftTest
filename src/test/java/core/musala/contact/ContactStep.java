@@ -24,4 +24,8 @@ public class ContactStep {
     public void clickSendButton() {
         Assert.assertTrue(contactPage.clickSendButton());
     }
+
+    public void verifyErrorMessage(String errorMessage) {
+        Assert.assertTrue(contactPage.verifyErrorMessage(errorMessage));
+    }
 }

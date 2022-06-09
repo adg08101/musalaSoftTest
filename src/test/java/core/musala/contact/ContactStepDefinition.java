@@ -26,7 +26,7 @@ public class ContactStepDefinition {
     }
 
     @Then("Verify that error message {string} appears")
-    public void verifyThatErrorMessageTheEMailAddressEnteredIsInvalidAppears(String message) {
-        System.out.println(message);
+    public void verifyThatErrorMessageTheEMailAddressEnteredIsInvalidAppears(String errorMessage) {
+        contactStep.verifyErrorMessage(errorMessage);
     }
 }

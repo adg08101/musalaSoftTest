@@ -10,7 +10,9 @@ public class ContactPage extends PageObject {
     private final By subjectLocator = By.xpath("//input[@name='your-subject']");
     private final By messageLocator = By.xpath("//textarea[@name='your-message']");
     private final By sendBtnLocator = By.xpath("//input[@type='submit']");
-    private final By emailErrorMessage = By.xpath("//a[text()='The e-mail address entered is invalid.']");
+    private final By errorsOnFormLocator =
+            By.xpath("//div[text()='One or more fields have an error. Please check and try again.']");
+    private String errorMessageLocator = "//span[text()='message']";
 
     public boolean fillAllFieldsNotEmail() {
         try {
@@ -40,5 +42,11 @@ public class ContactPage extends PageObject {
         waitForElementAndSet(sendBtnLocator);
         clickOnItem(getElement());
         return true;
+    }
+
+    public boolean verifyErrorMessage(String errorMessage) {
+        waitForElementAndSet(errorsOnFormLocator);
+        waitForElementAndSet(By.xpath(errorMessageLocator.replace("message", errorMessage)));
+        return getElement().isDisplayed();
     }
 }

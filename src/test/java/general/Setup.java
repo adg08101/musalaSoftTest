@@ -68,7 +68,7 @@ public final class Setup {
                 break;
         }
 
-        getDriver().manage().window().maximize();
+        getDriver().manage().window().fullscreen();
         waitingObject = new WaitingObject(getDriver());
         setActions(new Actions(getDriver()));
         setJsExecutor((JavascriptExecutor) getDriver());
@@ -234,7 +234,7 @@ public final class Setup {
 
     @After
     public void close() {
-        waitTime(10);
+        waitTime(2);
         getDriver().close();
     }
 }

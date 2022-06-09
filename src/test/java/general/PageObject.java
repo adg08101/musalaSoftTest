@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -65,7 +66,13 @@ public class PageObject {
     }
 
     public void clickOnItem(WebElement element) {
-        Setup.getActions().click(element).build().perform();
+        try {
+            Setup.getActions().click(element).build().perform();
+        } catch (MoveTargetOutOfBoundsException e) {
+            getDriver().manage().window().fullscreen();
+            checkElementIsRendered(element);
+            clickOnItem(element);
+        }
     }
 
     public void sendKeysToInput(Object key, By elementLocator) {
