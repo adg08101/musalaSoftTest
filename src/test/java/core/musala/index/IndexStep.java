@@ -8,4 +8,8 @@ public class IndexStep {
     public IndexStep() {
         this.indexPage = new IndexPage();
     }
+
+    public IndexPage getIndexPage() {
+        return indexPage;
+    }
 }

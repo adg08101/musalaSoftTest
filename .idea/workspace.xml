@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="07f56abd-c64c-48de-86ec-7c70034bd911" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/musala/index/IndexStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/IndexStep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/musala/index/page/IndexPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/page/IndexPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/general/ConfigProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/ConfigProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/general/GeneralSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/GeneralSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/general/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/Property.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/general/Setup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/Setup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/defaultProperties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/defaultProperties.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/defaultProperties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/defaultProperties.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
