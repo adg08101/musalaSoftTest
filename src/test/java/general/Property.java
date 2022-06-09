@@ -3,7 +3,9 @@ package general;
 public enum Property {
     WEBDRIVER_CHROME_DRIVER,
     WEBDRIVER_CHROME_SILENTOUTPUT,
+    WEBDRIVER_FIREFOX_SILENTOUTPUT,
     CHROME_DRIVER, //(String) Environment variable name for Chrome driver executable file
+    FIREFOX_DRIVER,
     STRING_TRUE, //(String) True value
     BOOL_TRUE, //(Boolean) True value
     TIMEOUT_IMPLICIT_KEY, //(String) Navigator timeout key
@@ -19,6 +21,7 @@ public enum Property {
     STRING_USER_NAME,
     STRING_USER_PASSWORD,
     MUSALA_URL,
+    BROWSER,
     GOHEAVY_URL,
     GOHEAVY_LOGIN_TYPE,
     GOHEAVY_USERNAME_FIELD,

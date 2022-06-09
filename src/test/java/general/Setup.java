@@ -7,17 +7,22 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
 
 public final class Setup {
     private static WebDriver driver;
     private static HashMap<String, Object> store;
     private static ChromeOptions options;
+    private static FirefoxOptions firefoxOptions;
     private static Actions actions;
     private static ConfigProperties configProperties;
     private static WaitingObject waitingObject;
@@ -26,35 +31,19 @@ public final class Setup {
     private static InputStream input;
     private static Properties properties;
 
+    public static FirefoxOptions getFirefoxOptions() {
+        return firefoxOptions;
+    }
+
+    public static void setFirefoxOptions(FirefoxOptions firefoxOptions) {
+        Setup.firefoxOptions = firefoxOptions;
+    }
+
     @Before
     public void InitSetup() {
         try {
             setConfigProperties(new ConfigProperties());
-            System.setProperty((String) getConfigProperties().getProperties().get(Property.WEBDRIVER_CHROME_DRIVER),
-                    System.getenv((String) getConfigProperties().getProperties().get(Property.CHROME_DRIVER)));
-            System.setProperty((String) getConfigProperties().getProperties().get(Property.
-                    WEBDRIVER_CHROME_SILENTOUTPUT), (String) getConfigProperties().getProperties().
-                    get(Property.STRING_TRUE));
-            setOptions(new ChromeOptions());
-            setTimeouts(new HashMap<>());
-            getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_KEY),
-                    getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_VALUE));
-            getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_PAGELOAD_KEY),
-                    getConfigProperties().getProperties().get(Property.TIMEOUT_PAGELOAD_VALUE));
-            getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_KEY),
-                    getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_VALUE));
-            getOptions().setCapability((String) getConfigProperties().getProperties().get(Property.STRING_TIMEOUTS),
-                    getTimeouts());
-            getOptions().addArguments("enable-automation");
-            // getOptions().addArguments("--headless");
-            getOptions().addArguments("--window-size=1920,1080");
-            getOptions().addArguments("--no-sandbox");
-            getOptions().addArguments("--disable-extensions");
-            getOptions().addArguments("--dns-prefetch-disable");
-            getOptions().addArguments("--disable-gpu");
-            getOptions().setPageLoadStrategy(PageLoadStrategy.NONE);
-            setDriver(new ChromeDriver(getOptions()));
-            getDriver().manage().window().maximize();
+
             initObject();
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,11 +51,27 @@ public final class Setup {
     }
 
     private void initObject() {
-        waitingObject = new WaitingObject(getDriver());
         setStore(new HashMap<>());
+        loadDefaultProperties();
+
+        String browser = (String) Setup.getPropertyFromKey(Property.BROWSER);
+
+        switch (browser.toLowerCase(Locale.ROOT)) {
+            case "chrome":
+                applyChromeConfigurations();
+                break;
+            case "firefox":
+                applyFirefoxConfigurations();
+                break;
+            default:
+                System.out.println("Please check browser config");
+                break;
+        }
+
+        getDriver().manage().window().maximize();
+        waitingObject = new WaitingObject(getDriver());
         setActions(new Actions(getDriver()));
         setJsExecutor((JavascriptExecutor) getDriver());
-        loadDefaultProperties();
         getJsExecutor().executeScript("console.log('System online.')");
     }
 
@@ -82,6 +87,55 @@ public final class Setup {
 
         setKeyValueStore((String) getConfigProperties().getProperties().get(
                 Property.STRING_DEFAULT_PROPERTIES), getProperties());
+    }
+
+    private void applyChromeConfigurations() {
+        System.setProperty((String) getConfigProperties().getProperties().get(Property.WEBDRIVER_CHROME_DRIVER),
+                System.getenv((String) getConfigProperties().getProperties().get(Property.CHROME_DRIVER)));
+        System.setProperty((String) getConfigProperties().getProperties().get(Property.
+                WEBDRIVER_CHROME_SILENTOUTPUT), (String) getConfigProperties().getProperties().
+                get(Property.STRING_TRUE));
+        setOptions(new ChromeOptions());
+        setTimeouts(new HashMap<>());
+        getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_KEY),
+                getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_VALUE));
+        getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_PAGELOAD_KEY),
+                getConfigProperties().getProperties().get(Property.TIMEOUT_PAGELOAD_VALUE));
+        getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_KEY),
+                getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_VALUE));
+        getOptions().setCapability((String) getConfigProperties().getProperties().get(Property.STRING_TIMEOUTS),
+                getTimeouts());
+        getOptions().addArguments("enable-automation");
+        // getOptions().addArguments("--headless");
+        getOptions().addArguments("--window-size=1920,1080");
+        getOptions().addArguments("--no-sandbox");
+        getOptions().addArguments("--disable-extensions");
+        getOptions().addArguments("--dns-prefetch-disable");
+        getOptions().addArguments("--disable-gpu");
+        getOptions().setPageLoadStrategy(PageLoadStrategy.NONE);
+        setDriver(new ChromeDriver(getOptions()));
+    }
+
+    private void applyFirefoxConfigurations() {
+        System.setProperty("webdriver.gecko.driver",
+                System.getenv((String) getConfigProperties().getProperties().get(Property.FIREFOX_DRIVER)));
+        System.setProperty((String) getConfigProperties().getProperties().get(Property.
+                WEBDRIVER_CHROME_SILENTOUTPUT), (String) getConfigProperties().getProperties().
+                get(Property.STRING_TRUE));
+        setFirefoxOptions(new FirefoxOptions());
+        setTimeouts(new HashMap<>());
+        getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_KEY),
+                getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_VALUE));
+        getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_PAGELOAD_KEY),
+                getConfigProperties().getProperties().get(Property.TIMEOUT_PAGELOAD_VALUE));
+        getTimeouts().put((String) getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_KEY),
+                getConfigProperties().getProperties().get(Property.TIMEOUT_SCRIPT_VALUE));
+        getFirefoxOptions().setCapability((String) getConfigProperties().getProperties().get(Property.STRING_TIMEOUTS),
+                getTimeouts());
+        getFirefoxOptions().setPageLoadStrategy(PageLoadStrategy.NONE);
+        getFirefoxOptions().setLogLevel(Level.OFF);
+        setDriver(new FirefoxDriver(getFirefoxOptions()));
+        // getDriver().manage().deleteAllCookies();
     }
 
     public static Actions getActions() {

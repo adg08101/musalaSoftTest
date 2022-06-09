@@ -10,7 +10,9 @@ public class ConfigProperties {
         setProperties(new HashMap<>());
         getProperties().put(Property.WEBDRIVER_CHROME_DRIVER, "webdriver.chrome.driver");
         getProperties().put(Property.WEBDRIVER_CHROME_SILENTOUTPUT, "webdriver.chrome.silentOutput");
+        getProperties().put(Property.WEBDRIVER_FIREFOX_SILENTOUTPUT, "webdriver.firefox.silentOutput");
         getProperties().put(Property.CHROME_DRIVER, "CHROME_DRIVER");
+        getProperties().put(Property.FIREFOX_DRIVER, "FIREFOX_DRIVER");
         getProperties().put(Property.STRING_TRUE, "true");
         getProperties().put(Property.BOOL_TRUE, true);
         getProperties().put(Property.TIMEOUT_IMPLICIT_KEY, "implicit");
@@ -26,6 +28,7 @@ public class ConfigProperties {
         getProperties().put(Property.STRING_USER_NAME, "user_name");
         getProperties().put(Property.STRING_USER_PASSWORD, "user_password");
         getProperties().put(Property.MUSALA_URL, "musala_url");
+        getProperties().put(Property.BROWSER, "browser");
         getProperties().put(Property.GOHEAVY_URL, "goheavy_url");
         getProperties().put(Property.GOHEAVY_LOGIN_TYPE, "goheavy_login_type");
         getProperties().put(Property.GOHEAVY_USERNAME_FIELD, "goheavy_username_field");
