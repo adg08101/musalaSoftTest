@@ -15,9 +15,9 @@ public class ContactStepDefinition {
         contactStep.fillFieldsNotEmail();
     }
 
-    @Then("Under email field enter string with wrong email format")
-    public void underEmailFieldEnterStringWithWrongEmailFormat() {
-        contactStep.fillEmailWrongFormat();
+    @Then("Under email field enter string with wrong {string} format")
+    public void underEmailFieldEnterStringWithWrongFormat(String badEmail) {
+        contactStep.fillEmailWrongFormat(badEmail);
     }
 
     @When("Click Send button")

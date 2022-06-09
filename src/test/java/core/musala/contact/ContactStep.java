@@ -16,9 +16,30 @@ public class ContactStep {
         Assert.assertTrue(contactPage.fillAllFieldsNotEmail());
     }
 
-    public void fillEmailWrongFormat() {
-        String wrongEmailOne = (String) Setup.getPropertyFromKey(Property.BAD_EMAIL_ONE);
-        Assert.assertTrue(contactPage.fillEmailWrongFormat(wrongEmailOne));
+    public void fillEmailWrongFormat(String badEmail) {
+        String email;
+
+        switch (badEmail) {
+            case "badEmailOne":
+                email = (String) Setup.getPropertyFromKey(Property.BAD_EMAIL_ONE);
+                break;
+            case "badEmailTwo":
+                email = (String) Setup.getPropertyFromKey(Property.BAD_EMAIL_TWO);
+                break;
+            case "badEmailThree":
+                email = (String) Setup.getPropertyFromKey(Property.BAD_EMAIL_THREE);
+                break;
+            case "badEmailFour":
+                email = (String) Setup.getPropertyFromKey(Property.BAD_EMAIL_FOUR);
+                break;
+            case "badEmailFive":
+                email = (String) Setup.getPropertyFromKey(Property.BAD_EMAIL_FIVE);
+                break;
+            default:
+                email = "test@test";
+        }
+
+        Assert.assertTrue(contactPage.fillEmailWrongFormat(email));
     }
 
     public void clickSendButton() {

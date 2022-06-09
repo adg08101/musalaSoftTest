@@ -17,6 +17,7 @@ public class GeneralSteps extends PageObject {
     @Given("The user is at baseUrl")
     public void the_user_is_at_base_url() {
         Assert.assertTrue(indexStep.getIndexPage().isIndexViewRendered());
+        getDriver().manage().window().fullscreen();
     }
 
     @Given("The user scrolls down to {string}")

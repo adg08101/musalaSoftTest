@@ -68,11 +68,11 @@ public final class Setup {
                 break;
         }
 
-        getDriver().manage().window().fullscreen();
         waitingObject = new WaitingObject(getDriver());
         setActions(new Actions(getDriver()));
         setJsExecutor((JavascriptExecutor) getDriver());
         getJsExecutor().executeScript("console.log('System online.')");
+        getDriver().manage().window().maximize();
     }
 
     private void loadDefaultProperties() {

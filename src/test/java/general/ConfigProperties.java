@@ -30,12 +30,10 @@ public class ConfigProperties {
         getProperties().put(Property.MUSALA_URL, "musala_url");
         getProperties().put(Property.BROWSER, "browser");
         getProperties().put(Property.BAD_EMAIL_ONE, "incorrectEmailOne");
-        getProperties().put(Property.GOHEAVY_URL, "goheavy_url");
-        getProperties().put(Property.GOHEAVY_LOGIN_TYPE, "goheavy_login_type");
-        getProperties().put(Property.GOHEAVY_USERNAME_FIELD, "goheavy_username_field");
-        getProperties().put(Property.GOHEAVY_PASSWORD_FIELD, "goheavy_password_field");
-        getProperties().put(Property.GOHEAVY_LOGIN_ELEMENTS, "goheavy_login_elements");
-        getProperties().put(Property.GOHEAVY_LOGOFF_ELEMENTS, "goheavy_logoff_elements");
+        getProperties().put(Property.BAD_EMAIL_TWO, "incorrectEmailTwo");
+        getProperties().put(Property.BAD_EMAIL_THREE, "incorrectEmailThree");
+        getProperties().put(Property.BAD_EMAIL_FOUR, "incorrectEmailFour");
+        getProperties().put(Property.BAD_EMAIL_FIVE, "incorrectEmailFive");
         getProperties().put(Property.STR_LOGIN_TYPE, "_LOGIN_TYPE");
         getProperties().put(Property.STR_USERNAME_FIELD, "_USERNAME_FIELD");
         getProperties().put(Property.STR_PASSWORD_FIELD, "_PASSWORD_FIELD");
@@ -46,7 +44,6 @@ public class ConfigProperties {
         getProperties().put(Property.INT_ONE, 1);
         getProperties().put(Property.CHAR_SPACE, " ");
         getProperties().put(Property.STR_APP_PREFIX, "app_prefix");
-        getProperties().put(Property.KAHUA_URL, "kahua_url");
     }
 
     public HashMap<Object, Object> getProperties() {
