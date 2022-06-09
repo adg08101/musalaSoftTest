@@ -234,8 +234,7 @@ public final class Setup {
 
     @After
     public void close() {
-        waitTime((Integer) Setup.getConfigProperties().
-                getProperties().get(Property.INT_ONE));
+        waitTime(10);
         getDriver().close();
     }
 }

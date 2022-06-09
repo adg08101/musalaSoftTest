@@ -29,6 +29,7 @@ public class ConfigProperties {
         getProperties().put(Property.STRING_USER_PASSWORD, "user_password");
         getProperties().put(Property.MUSALA_URL, "musala_url");
         getProperties().put(Property.BROWSER, "browser");
+        getProperties().put(Property.BAD_EMAIL_ONE, "incorrectEmailOne");
         getProperties().put(Property.GOHEAVY_URL, "goheavy_url");
         getProperties().put(Property.GOHEAVY_LOGIN_TYPE, "goheavy_login_type");
         getProperties().put(Property.GOHEAVY_USERNAME_FIELD, "goheavy_username_field");

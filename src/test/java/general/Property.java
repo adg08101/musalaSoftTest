@@ -21,6 +21,7 @@ public enum Property {
     STRING_USER_NAME,
     STRING_USER_PASSWORD,
     MUSALA_URL,
+    BAD_EMAIL_ONE,
     BROWSER,
     GOHEAVY_URL,
     GOHEAVY_LOGIN_TYPE,

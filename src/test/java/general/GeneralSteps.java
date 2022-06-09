@@ -25,9 +25,8 @@ public class GeneralSteps extends PageObject {
                 "ContactUs"
         };
 
-        if (Arrays.asList(indexAnchors).contains(anchor)) {
-            indexStep.getIndexPage().scrollDownToElement(anchor);
-        }
+        if (Arrays.asList(indexAnchors).contains(anchor))
+            Assert.assertTrue(indexStep.getIndexPage().scrollDownToElement(anchor));
     }
 
     public IndexStep getIndexPage() {

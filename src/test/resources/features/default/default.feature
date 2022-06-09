@@ -23,6 +23,10 @@ Feature: TEST CASE 1
 
   Scenario Outline: Main Default Scenario
     Given The user scrolls down to "<pageAnchor>"
+    Then Fill all required fields except email
+    Then Under email field enter string with wrong email format
+    When Click Send button
+    Then Verify that error message 'The e-mail address entered is invalid.' appears
 
     Examples:
       | pageAnchor |

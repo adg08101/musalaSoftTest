@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f56abd-c64c-48de-86ec-7c70034bd911" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/musala/contact/ContactStep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/musala/contact/ContactStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/musala/contact/page/ContactPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/IndexStepDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/core/musala/index/IndexStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/IndexStep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/core/musala/index/page/IndexPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/musala/index/page/IndexPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/general/ConfigProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/ConfigProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/general/GeneralSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/GeneralSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/general/PageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/PageObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/general/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/general/Setup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/general/Setup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/defaultProperties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/defaultProperties.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/default/default.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/default/default.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/defaultProperties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/defaultProperties.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,11 +71,11 @@
       <recent name="core.kahua.login.page" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Feature: default">
+  <component name="RunManager" selected="Cucumber Java.Scenario: Main Default Scenario">
     <configuration name="Feature: default" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/default/default.feature" />
-      <option name="GLUE" value="general core.goheavy" />
+      <option name="GLUE" value="general core.musala" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="core" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />

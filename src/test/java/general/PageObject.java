@@ -64,6 +64,10 @@ public class PageObject {
         Setup.getActions().click(getElement()).build().perform();
     }
 
+    public void clickOnItem(WebElement element) {
+        Setup.getActions().click(element).build().perform();
+    }
+
     public void sendKeysToInput(Object key, By elementLocator) {
         try {
             waitForElementAndSet(elementLocator);
@@ -211,5 +215,36 @@ public class PageObject {
 
     public void setElements(List<WebElement> elements) {
         this.elements = elements;
+    }
+
+    public boolean checkElementIsRendered (WebElement element) {
+        return element.isDisplayed();
+    }
+
+    public boolean scrollDownToElementSetAndClick(By element, WebElement scrollReceiver) {
+        while (!isPageReady()) {
+            Setup.waitTime(5);
+            print("Page still not loaded");
+            scrollDownToElementSetAndClick(element, scrollReceiver);
+        }
+
+        print("Page now loaded");
+
+        try {
+            waitForElementAndSet(element);
+
+            Setup.getJsExecutor().executeScript("scrollTo(0, " +
+                    (getElement().getLocation().getY() - getDriver().manage().window().getSize().height / 2) + ");",
+                    scrollReceiver);
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean isPageReady() {
+        return Setup.getJsExecutor().executeScript("return document.readyState;").equals("complete");
     }
 }

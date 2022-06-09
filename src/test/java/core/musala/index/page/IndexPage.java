@@ -3,6 +3,7 @@ package core.musala.index.page;
 import general.PageObject;
 import general.Property;
 import general.Setup;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,7 +12,7 @@ import java.util.Locale;
 public class IndexPage extends PageObject {
     private WebElement siteLogo;
     private WebElement scrollReceiver;
-    private WebElement siteContactUs;
+    private By siteContactUs = By.xpath("//span[@data-alt='Contact us' and text()='Contact us']");
     private String view = "Musala Index";
     private String title = "Musala Soft";
 
@@ -45,19 +46,14 @@ public class IndexPage extends PageObject {
     }
 
     public boolean scrollDownToElement(String element) throws InterruptedException {
-        for (int i = 0;i < 5; i++) {
-            Setup.getJsExecutor().executeScript("scrollBy(0, 100);", getScrollReceiver());
-            Setup.waitTime(5);
+        switch (element) {
+            case "ContactUs":
+                Assert.assertTrue(scrollDownToElementSetAndClick(siteContactUs, getScrollReceiver()));
+                getElement().click();
+                return true;
+            default:
+                return false;
         }
-        return true;
-    }
-
-    public WebElement getSiteContactUs() {
-        return siteContactUs;
-    }
-
-    public void setSiteContactUs(WebElement siteContactUs) {
-        this.siteContactUs = siteContactUs;
     }
 
     public WebElement getScrollReceiver() {
