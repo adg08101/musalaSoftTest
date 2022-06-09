@@ -112,6 +112,7 @@ public final class Setup {
         getOptions().addArguments("--disable-extensions");
         getOptions().addArguments("--dns-prefetch-disable");
         getOptions().addArguments("--disable-gpu");
+        getOptions().addArguments("--start-maximized");
         getOptions().setPageLoadStrategy(PageLoadStrategy.NONE);
         setDriver(new ChromeDriver(getOptions()));
     }
@@ -134,6 +135,7 @@ public final class Setup {
                 getTimeouts());
         getFirefoxOptions().setPageLoadStrategy(PageLoadStrategy.NONE);
         getFirefoxOptions().setLogLevel(Level.OFF);
+        getFirefoxOptions().addArguments("--start-maximized");
         setDriver(new FirefoxDriver(getFirefoxOptions()));
         // getDriver().manage().deleteAllCookies();
     }
@@ -234,7 +236,7 @@ public final class Setup {
 
     @After
     public void close() {
-        waitTime(5);
+        waitTime(15);
         getDriver().close();
     }
 }

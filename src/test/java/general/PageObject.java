@@ -69,7 +69,8 @@ public class PageObject {
         try {
             Setup.getActions().click(element).build().perform();
         } catch (MoveTargetOutOfBoundsException e) {
-            getDriver().manage().window().fullscreen();
+            // Work around for this with scrolling
+            getDriver().manage().window().maximize();
             checkElementIsRendered(element);
             clickOnItem(element);
         }

@@ -67,6 +67,14 @@ public class IndexPage extends PageObject {
     }
 
     public boolean clickCompanyTab() {
+        while (!isPageReady()) {
+            Setup.waitTime(5);
+            print("Page not ready");
+            clickCompanyTab();
+        }
+
+        print("Page ready");
+
         waitForElementAndSet(getCompanyTab());
         getElement().click();
         return true;
