@@ -1,6 +1,7 @@
 package core.musala.index;
 
 import core.musala.index.page.IndexPage;
+import org.junit.Assert;
 
 public class IndexStep {
     private final IndexPage indexPage;
@@ -11,5 +12,9 @@ public class IndexStep {
 
     public IndexPage getIndexPage() {
         return indexPage;
+    }
+
+    public void clickCompanyTab() {
+        Assert.assertTrue(indexPage.clickCompanyTab());
     }
 }

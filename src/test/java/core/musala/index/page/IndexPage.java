@@ -13,6 +13,8 @@ public class IndexPage extends PageObject {
     private WebElement siteLogo;
     private WebElement scrollReceiver;
     private By siteContactUs = By.xpath("//span[@data-alt='Contact us' and text()='Contact us']");
+    private final By companyTab = By.xpath("" +
+            "//ul[@id='menu-main-nav-1']/descendant::a[text()='Company' and @href='https://www.musala.com/company/']");
     private String view = "Musala Index";
     private String title = "Musala Soft";
 
@@ -62,5 +64,15 @@ public class IndexPage extends PageObject {
 
     public void setScrollReceiver(WebElement scrollReceiver) {
         this.scrollReceiver = scrollReceiver;
+    }
+
+    public boolean clickCompanyTab() {
+        waitForElementAndSet(getCompanyTab());
+        getElement().click();
+        return true;
+    }
+
+    public By getCompanyTab() {
+        return companyTab;
     }
 }

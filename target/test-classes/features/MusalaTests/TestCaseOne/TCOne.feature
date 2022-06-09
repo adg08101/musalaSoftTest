@@ -1,7 +1,7 @@
-#Author: adavila86@gmail.com
-#Keywords Summary : MUSALA SOFT TESTS
-#Feature: SAMPLE FEATURE TEST CASE 1
-#Scenario: TEST CASE 1
+# Author: adavila86@gmail.com
+# Keywords Summary : MUSALA SOFT TESTS
+# Feature: SAMPLE FEATURE TEST CASE 1
+# Scenario: TEST CASE 1
 #------------------------------------------
 #1	Visit http://www.musala.com/
 #2	Scroll down and go to ‘Contact Us’
@@ -19,9 +19,9 @@
 Feature: TEST CASE 1
 
   Background:
-    Given TEST CASE 1
+    Given The user is at baseUrl
 
-  Scenario Outline: Main Default Scenario
+  Scenario Outline: TEST CASE 1
     Given The user scrolls down to "<pageAnchor>"
     Then Fill all required fields except email
     Then Under email field enter string with wrong "<wrongEmail>" format
