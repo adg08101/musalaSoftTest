@@ -13,4 +13,8 @@ public class CareerStep {
     public void checkOpenPositions() {
         Assert.assertTrue(careerPage.clickOpenPositions());
     }
+
+    public void choosePosition(String position) {
+        Assert.assertTrue(careerPage.choosePosition(position));
+    }
 }

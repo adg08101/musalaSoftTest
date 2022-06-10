@@ -31,7 +31,10 @@ Feature: TEST CASE 3
   Scenario Outline: TEST CASE 3
     When Click Careers tab from the top
     Then Click Check our open positions button
+    And Verify that Join Us page is opened
+    Then From the dropdown Select location select "<location>"
+    And Choose open position by "<name>"
 
     Examples:
-      | section    |
-      | Leadership |
+      | location | name                   |
+      | Anywhere | Automation QA Engineer |
