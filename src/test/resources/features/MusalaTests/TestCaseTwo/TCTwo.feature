@@ -19,21 +19,13 @@ Feature: TEST CASE 2
   Background:
     Given The user is at baseUrl
 
-  Scenario: TEST CASE 2
+  Scenario Outline: TEST CASE 2
     When Click Company tab from the top
     Then Verify that the correct URL loads
-    # Then Under email field enter string with wrong "<wrongEmail>" format
-    # When Click Send button
-    # Then Verify that error message 'The e-mail address entered is invalid.' appears
+    And Verify that there is "<section>" section
+    Then Click the Facebook link from the footer
+    Then Verify that the correct URL and profile picture loads
 
-    # Examples:
-      # | pageAnchor | wrongEmail    |
-      # | ContactUs  | badEmailOne   |
-      # | ContactUs  | badEmailOne   |
-      # | ContactUs  | badEmailOne   |
-      # | ContactUs  | badEmailOne   |
-      # | ContactUs  | badEmailOne   |
-      # | ContactUs  | badEmailTwo   |
-      # | ContactUs  | badEmailThree |
-      # | ContactUs  | badEmailFour  |
-      # | ContactUs  | badEmailFive  |
+    Examples:
+      | section    |
+      | Leadership |

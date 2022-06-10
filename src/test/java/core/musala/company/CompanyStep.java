@@ -13,4 +13,12 @@ public class CompanyStep {
     public void verifyPage() {
         Assert.assertTrue(companyPage.verifyPage());
     }
+
+    public void checkForSection(String section) {
+        Assert.assertNotNull(companyPage.verifySection(section));
+    }
+
+    public void clickFacebookLink() {
+        Assert.assertTrue(companyPage.clickFacebook());
+    }
 }

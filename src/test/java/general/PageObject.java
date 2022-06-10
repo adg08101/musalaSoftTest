@@ -75,11 +75,22 @@ public class PageObject {
         try {
             Setup.getActions().click(element).build().perform();
         } catch (WebDriverException e) {
-            // Work around for this with scrolling
+            // Work around for this by scrolling
             getDriver().manage().window().fullscreen();
             checkElementIsRendered(element);
             Setup.waitTime(5);
             clickOnItem(element);
+        }
+    }
+
+    public void safetyNetClickOnItem(WebElement element) {
+        try {
+            Setup.getActions().click(element).build().perform();
+        } catch (WebDriverException e) {
+            getDriver().manage().window().fullscreen();
+            checkElementIsRendered(element);
+            Setup.waitTime(3);
+            getDriver().get(getElement().getAttribute("href"));
         }
     }
 
@@ -236,11 +247,11 @@ public class PageObject {
         return element.isDisplayed();
     }
 
-    public boolean scrollDownToElementSetAndClick(By element, WebElement scrollReceiver) {
+    public boolean scrollDownToElementAndSet(By element, WebElement scrollReceiver) {
         while (!isPageReady()) {
             Setup.waitTime(5);
             print("Page still not loaded");
-            scrollDownToElementSetAndClick(element, scrollReceiver);
+            scrollDownToElementAndSet(element, scrollReceiver);
         }
 
         print("Page now loaded");
@@ -248,8 +259,38 @@ public class PageObject {
         try {
             waitForElementAndSet(element);
 
+            print(getDriver().manage().window().getSize().height / 2);
+            print(getElement().getLocation().getY());
+            print(getElement().getLocation().getY() - getDriver().manage().window().getSize().height / 2);
+
             Setup.getJsExecutor().executeScript("scrollTo(0, " +
                     (getElement().getLocation().getY() - getDriver().manage().window().getSize().height / 2) + ");",
+                    scrollReceiver);
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean scrollDownToElementNoOffsetAndSet(By element, WebElement scrollReceiver) {
+        while (!isPageReady()) {
+            Setup.waitTime(5);
+            print("Page still not loaded");
+            scrollDownToElementNoOffsetAndSet(element, scrollReceiver);
+        }
+
+        print("Page now loaded");
+
+        try {
+            waitForElementAndSet(element);
+
+            print(getDriver().manage().window().getSize().height / 2);
+            print(getElement().getLocation().getY());
+            print(getElement().getLocation().getY() - getDriver().manage().window().getSize().height / 2);
+
+            Setup.getJsExecutor().executeScript("scrollTo(0, " + getElement().getLocation().getY() + ");",
                     scrollReceiver);
 
             return true;

@@ -13,8 +13,11 @@ public class IndexPage extends PageObject {
     private WebElement siteLogo;
     private WebElement scrollReceiver;
     private By siteContactUs = By.xpath("//span[@data-alt='Contact us' and text()='Contact us']");
-    private final By companyTab = By.xpath("" +
-            "//a[text()='Company' and @href='https://www.musala.com/company/']");
+    private final By readyMessage = By.xpath("//span[@id='undefined' and text()='Have a long-term partner next to " +
+            "you on the path of success']");
+    private final By companyTab =
+            By.xpath("//ul[@id='menu-main-nav-1']/descendant::" +
+                    "a[@class='main-link' and text()='Company' and @href='https://www.musala.com/company/']");
     private String view = "Musala Index";
     private String title = "Musala Soft";
 
@@ -50,7 +53,7 @@ public class IndexPage extends PageObject {
     public boolean scrollDownToElement(String element) throws InterruptedException {
         switch (element) {
             case "ContactUs":
-                Assert.assertTrue(scrollDownToElementSetAndClick(siteContactUs, getScrollReceiver()));
+                Assert.assertTrue(scrollDownToElementAndSet(siteContactUs, getScrollReceiver()));
                 getElement().click();
                 return true;
             default:
@@ -75,12 +78,15 @@ public class IndexPage extends PageObject {
 
         print("Page now loaded");
 
-        waitForElementSize(getCompanyTab());
+        waitForElementAndSet(readyMessage);
+
+        waitForElementsToBeClickable(getCompanyTab());
         waitForElementAndSet(getCompanyTab());
 
-        print(getElement().getSize().height + " size " + getElement().getSize().width);
-
         clickOnItem(getElement());
+
+        // Work around as safety net
+        getDriver().get(getElement().getAttribute("href"));
 
         return true;
     }
