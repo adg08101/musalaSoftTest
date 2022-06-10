@@ -1,7 +1,7 @@
 # Scenario: TEST CASE 2
 #------------------------------------------
 #  1)	Visit http://www.musala.com/
-#  2)	Click ‘Company’ tap from the top
+#  2)	Click ‘Company’ tab from the top
 #  3)	Verify that the correct URL (http://www.musala.com/company/) loads
 #  4)	Verify that there is ‘Leadership’ section
 #  5)	Click the Facebook link from the footer
@@ -20,8 +20,8 @@ Feature: TEST CASE 2
     Given The user is at baseUrl
 
   Scenario: TEST CASE 2
-    When Click Company tap from the top
-    # Then Fill all required fields except email
+    When Click Company tab from the top
+    Then Verify that the correct URL loads
     # Then Under email field enter string with wrong "<wrongEmail>" format
     # When Click Send button
     # Then Verify that error message 'The e-mail address entered is invalid.' appears

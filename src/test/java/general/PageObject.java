@@ -1,11 +1,7 @@
 package general;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -50,9 +46,19 @@ public class PageObject {
         setElement(getWebElement(elementLocator));
     }
 
-    public void waitForElementsAndSet(By elementLocator) {
-        getWait().until(ExpectedConditions.presenceOfElementLocated(elementLocator));
-        setElements(getWebElements(elementLocator));
+    public  void waitForElementVisibility(By elementLocator) {
+        getWait().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public  void waitForElementSize(By elementLocator) {
+        getWait().until(ExpectedConditions.attributeToBeNotEmpty(
+                getDriver().findElement(elementLocator),
+                "height"
+        ));
+        getWait().until(ExpectedConditions.attributeToBeNotEmpty(
+                getDriver().findElement(elementLocator),
+                "width"
+        ));
     }
 
     public void waitForElementsToBeClickable(By elementLocator) {
@@ -68,10 +74,11 @@ public class PageObject {
     public void clickOnItem(WebElement element) {
         try {
             Setup.getActions().click(element).build().perform();
-        } catch (MoveTargetOutOfBoundsException e) {
+        } catch (WebDriverException e) {
             // Work around for this with scrolling
-            getDriver().manage().window().maximize();
+            getDriver().manage().window().fullscreen();
             checkElementIsRendered(element);
+            Setup.waitTime(5);
             clickOnItem(element);
         }
     }

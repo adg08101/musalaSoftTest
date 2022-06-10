@@ -9,8 +9,8 @@ public class IndexStepDefinition {
         indexStep = new IndexStep();
     }
 
-    @When("Click Company tap from the top")
-    public void clickCompanyTapFromTheTop() {
+    @When("Click Company tab from the top")
+    public void clickCompanyTabFromTheTop() {
         indexStep.clickCompanyTab();
     }
 }

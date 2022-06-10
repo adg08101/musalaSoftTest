@@ -14,7 +14,7 @@ public class IndexPage extends PageObject {
     private WebElement scrollReceiver;
     private By siteContactUs = By.xpath("//span[@data-alt='Contact us' and text()='Contact us']");
     private final By companyTab = By.xpath("" +
-            "//ul[@id='menu-main-nav-1']/descendant::a[text()='Company' and @href='https://www.musala.com/company/']");
+            "//a[text()='Company' and @href='https://www.musala.com/company/']");
     private String view = "Musala Index";
     private String title = "Musala Soft";
 
@@ -69,14 +69,19 @@ public class IndexPage extends PageObject {
     public boolean clickCompanyTab() {
         while (!isPageReady()) {
             Setup.waitTime(5);
-            print("Page not ready");
+            print("Page still not loaded");
             clickCompanyTab();
         }
 
-        print("Page ready");
+        print("Page now loaded");
 
+        waitForElementSize(getCompanyTab());
         waitForElementAndSet(getCompanyTab());
-        getElement().click();
+
+        print(getElement().getSize().height + " size " + getElement().getSize().width);
+
+        clickOnItem(getElement());
+
         return true;
     }
 
