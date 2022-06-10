@@ -13,4 +13,9 @@ public class IndexStepDefinition {
     public void clickCompanyTabFromTheTop() {
         indexStep.clickCompanyTab();
     }
+
+    @When("Click Careers tab from the top")
+    public void clickCareersTabFromTheTop() {
+        indexStep.clickCareersTab();
+    }
 }

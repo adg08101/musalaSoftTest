@@ -236,7 +236,7 @@ public final class Setup {
 
     @After
     public void close() {
-        waitTime(2);
+        waitTime(10);
         getDriver().close();
     }
 }

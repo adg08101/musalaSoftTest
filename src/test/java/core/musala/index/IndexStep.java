@@ -17,4 +17,8 @@ public class IndexStep {
     public void clickCompanyTab() {
         Assert.assertTrue(indexPage.clickCompanyTab());
     }
+
+    public void clickCareersTab() {
+        Assert.assertTrue(indexPage.clickCareersTab());
+    }
 }

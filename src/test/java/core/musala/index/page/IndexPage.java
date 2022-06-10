@@ -18,6 +18,9 @@ public class IndexPage extends PageObject {
     private final By companyTab =
             By.xpath("//ul[@id='menu-main-nav-1']/descendant::" +
                     "a[@class='main-link' and text()='Company' and @href='https://www.musala.com/company/']");
+    private final By careerTab =
+            By.xpath("//ul[@id='menu-main-nav-1']/descendant::" +
+                    "a[@class='main-link' and text()='Careers' and @href='https://www.musala.com/careers/']");
     private String view = "Musala Index";
     private String title = "Musala Soft";
 
@@ -93,5 +96,27 @@ public class IndexPage extends PageObject {
 
     public By getCompanyTab() {
         return companyTab;
+    }
+
+    public boolean clickCareersTab() {
+        while (!isPageReady()) {
+            Setup.waitTime(5);
+            print("Page still not loaded");
+            clickCareersTab();
+        }
+
+        print("Page now loaded");
+
+        waitForElementAndSet(readyMessage);
+
+        waitForElementsToBeClickable(careerTab);
+        waitForElementAndSet(careerTab);
+
+        clickOnItem(getElement());
+
+        // Work around as safety net
+        getDriver().get(getElement().getAttribute("href"));
+
+        return true;
     }
 }
