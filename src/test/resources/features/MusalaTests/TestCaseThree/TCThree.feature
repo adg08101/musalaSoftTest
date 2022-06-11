@@ -34,6 +34,9 @@ Feature: TEST CASE 3
     And Verify that Join Us page is opened
     Then From the dropdown Select location select "<location>"
     And Choose open position by "<name>"
+    Then Verify that main sections are shown
+    And Verify that 'Apply' button is present
+    Then Click 'Apply' button
 
     Examples:
       | location | name                   |

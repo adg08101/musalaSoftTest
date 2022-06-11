@@ -16,11 +16,11 @@ public class ConfigProperties {
         getProperties().put(Property.STRING_TRUE, "true");
         getProperties().put(Property.BOOL_TRUE, true);
         getProperties().put(Property.TIMEOUT_IMPLICIT_KEY, "implicit");
-        getProperties().put(Property.TIMEOUT_IMPLICIT_VALUE, 150);
+        getProperties().put(Property.TIMEOUT_IMPLICIT_VALUE, 45);
         getProperties().put(Property.TIMEOUT_PAGELOAD_KEY, "pageLoad");
-        getProperties().put(Property.TIMEOUT_PAGELOAD_VALUE, 150);
+        getProperties().put(Property.TIMEOUT_PAGELOAD_VALUE, 45);
         getProperties().put(Property.TIMEOUT_SCRIPT_KEY, "script");
-        getProperties().put(Property.TIMEOUT_SCRIPT_VALUE, 150);
+        getProperties().put(Property.TIMEOUT_SCRIPT_VALUE, 45);
         getProperties().put(Property.STRING_TIMEOUTS, "timeouts");
         getProperties().put(Property.INT_SHORT_TIME, Long.parseLong("1500"));
         getProperties().put(Property.DEFAULT_PROPERTIES_FILE_PATH, "/defaultProperties.properties");

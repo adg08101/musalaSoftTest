@@ -21,6 +21,14 @@ public class PageObject {
     private String userName;
     private String password;
     private LoginType loginType;
+    private final By generalDescriptionSectionLocator =
+            By.xpath("//h2[text()='General description']");
+    private final By requirementsSectionLocator =
+            By.xpath("//h2[text()='Requirements']");;
+    private final By responsibilitiesSectionLocator =
+            By.xpath("//h2[text()='Responsibilities']");;
+    private final By whatWeOfferSectionLocator =
+            By.xpath("//h2[text()='What we offer']");;
 
     public PageObject() {
         setFaker(new Faker());
@@ -259,10 +267,6 @@ public class PageObject {
         try {
             waitForElementAndSet(element);
 
-            print(getDriver().manage().window().getSize().height / 2);
-            print(getElement().getLocation().getY());
-            print(getElement().getLocation().getY() - getDriver().manage().window().getSize().height / 2);
-
             Setup.getJsExecutor().executeScript("scrollTo(0, " +
                     (getElement().getLocation().getY() - getDriver().manage().window().getSize().height / 2) + ");",
                     scrollReceiver);
@@ -302,5 +306,25 @@ public class PageObject {
 
     public boolean isPageReady() {
         return Setup.getJsExecutor().executeScript("return document.readyState;").equals("complete");
+    }
+
+    public WebElement getGeneralDescriptionSection() {
+        waitForElementAndSet(generalDescriptionSectionLocator);
+        return getElement();
+    }
+
+    public WebElement getRequirementsSection() {
+        waitForElementAndSet(requirementsSectionLocator);
+        return getElement();
+    }
+
+    public WebElement getResponsibilitiesSection() {
+        waitForElementAndSet(responsibilitiesSectionLocator);
+        return getElement();
+    }
+
+    public WebElement getWhatWeOfferSection() {
+        waitForElementAndSet(whatWeOfferSectionLocator);
+        return getElement();
     }
 }

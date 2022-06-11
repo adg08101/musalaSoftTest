@@ -107,7 +107,7 @@ public final class Setup {
                 getTimeouts());
         getOptions().addArguments("enable-automation");
         // getOptions().addArguments("--headless");
-        getOptions().addArguments("--window-size=1920,1080");
+        // getOptions().addArguments("--window-size=1920,1080");
         getOptions().addArguments("--no-sandbox");
         getOptions().addArguments("--disable-extensions");
         getOptions().addArguments("--dns-prefetch-disable");
