@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class PageObject {
@@ -58,6 +59,23 @@ public class PageObject {
             print(e.getMessage());
             return false;
         }
+    }
+
+    public void zoomInOrOut(boolean in, int times) {
+        getRobot().keyPress(KeyEvent.VK_CONTROL);
+        while (times > 0) {
+            if (in)
+                pressKey(KeyEvent.VK_ADD);
+            else
+                pressKey(KeyEvent.VK_MINUS);
+            times--;
+        }
+        getRobot().keyRelease(KeyEvent.VK_CONTROL);
+    }
+
+    public void pressKey(int key) {
+        getRobot().keyPress(key);
+        getRobot().keyRelease(key);
     }
 
     public void waitForElementAndSet(By elementLocator) {

@@ -5,6 +5,7 @@ import general.Property;
 import general.Setup;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 
 import java.awt.*;
@@ -51,6 +52,9 @@ public class IndexPage extends PageObject {
     }
 
     public boolean isIndexViewRendered() {
+        // Play safe on small screens
+        // zoomInOrOut(false, 9);
+
         return getSiteLogo() != null && getDriver().getTitle().equals(this.title);
     }
 
@@ -100,15 +104,17 @@ public class IndexPage extends PageObject {
     }
 
     public boolean clickCareersTab() {
+        // TODO: Uncomment this after test
+        /*
         while (!isPageReady()) {
             Setup.waitTime(5);
             print("Page still not loaded");
             clickCareersTab();
-        }
+        }*/
 
         print("Page now loaded");
 
-        // Uncomment this after test
+        // TODO: Uncomment this after test
         // waitForElementAndSet(readyMessage);
 
         waitForElementsToBeClickable(careerTab);
@@ -117,7 +123,12 @@ public class IndexPage extends PageObject {
         clickOnItem(getElement());
 
         // Work around as safety net
-        getDriver().get(getElement().getAttribute("href"));
+        try {
+            getElement().click();
+            getDriver().get(getElement().getAttribute("href"));
+        } catch (StaleElementReferenceException e) {
+            print("StaleElementReferenceException");
+        }
 
         return true;
     }

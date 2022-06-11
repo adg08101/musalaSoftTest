@@ -33,7 +33,7 @@ public class CareerPage extends PageObject {
         By positionLocator = By.xpath("//h2[text()='Automation QA Engineer']");
 
         waitForElementAndSet(positionLocator);
-        scrollDownToElementNoOffsetAndSet(positionLocator,
+        scrollDownToElementAndSet(positionLocator,
                 getWebElement(By.xpath("//html")));
 
         getElement().click();

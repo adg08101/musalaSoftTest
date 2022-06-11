@@ -1,8 +1,10 @@
 package core.musala.join_us.page;
 
 import general.PageObject;
+import general.Setup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 
 import java.awt.*;
 
@@ -27,7 +29,14 @@ public class JoinUsPage extends PageObject {
         clickOnItem(getElement());
         getElement().sendKeys(location.substring(0, 1));
         print(location);
-        getElement().sendKeys(Keys.RETURN);
+        try {
+            getElement().sendKeys(Keys.RETURN);
+        } catch (StaleElementReferenceException e) {
+            zoomInOrOut(false, 5);
+        }
+
+        Setup.waitTime(10);
+
         verifyPage();
         return true;
     }
