@@ -3,10 +3,12 @@ package core.musala.company;
 import core.musala.company.page.CompanyPage;
 import org.junit.Assert;
 
+import java.awt.*;
+
 public class CompanyStep {
     private CompanyPage companyPage;
 
-    public CompanyStep() {
+    public CompanyStep() throws AWTException {
         companyPage = new CompanyPage();
     }
 

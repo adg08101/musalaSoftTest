@@ -3,10 +3,12 @@ package core.musala.careers;
 import core.musala.careers.page.CareerPage;
 import org.junit.Assert;
 
+import java.awt.*;
+
 public class CareerStep {
     private CareerPage careerPage;
 
-    public CareerStep() {
+    public CareerStep() throws AWTException {
         careerPage = new CareerPage();
     }
 

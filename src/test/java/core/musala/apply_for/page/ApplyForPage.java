@@ -4,41 +4,54 @@ import general.PageObject;
 import general.Setup;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class ApplyForPage extends PageObject {
     private final By cvLocator = By.name("uploadtextfield");
     private final By linkedinLocator = By.name("linkedin");
     private final By agreeLocator = By.name("adConsentChx");
     private final By closeBtnLocator = By.xpath("//button[text()='Close']");
+    private final String fakeCV =
+            "https://docs.google.com/document/d/1Q0Bugp_2NaLBiLwVAXN0GMpjLVhYLgLBKhgTQUkCkes/edit?usp=sharing";
+
+    public ApplyForPage() throws AWTException {
+    }
 
     public boolean validateData() {
         emptyFieldsTest();
 
-        waitForElementAndSet(closeBtnLocator);
-        waitForElementsToBeClickable(closeBtnLocator);
-        getElement().click();
+        clickCloseBtn();
 
         wrongFormatFieldsTest();
 
-        uploadCv();
+        finalChecks();
 
         return true;
+    }
+
+    private void finalChecks() {
+        Assert.assertTrue(waitForElementsToCount(
+                By.xpath(errorMessageLocator.replace("message", "The field is required.")), 3));
+        Assert.assertTrue(waitForElementsToCount(
+                By.xpath(errorMessageLocator.replace("message",
+                        "The e-mail address entered is invalid.")), 1));
+        Assert.assertTrue(waitForElementsToCount(
+                By.xpath(errorMessageLocator.replace("message",
+                        "Please verify that you are not a robot.")), 1));
     }
 
     public void emptyFieldsTest() {
         waitForElementAndSet(agreeLocator);
         clickOnItem(agreeLocator);
 
-        waitForElementAndSet(sendBtnLocator);
-        waitForElementsToBeClickable(sendBtnLocator);
-        getElement().click();
+        clickSendBtn();
 
         waitForElementAndSet(errorsOnFormLocator);
 
-        errorMessageLocator = errorMessageLocator.replace("message", "The field is required.");
-
-        Assert.assertTrue(waitForElementsToCount(By.xpath(errorMessageLocator), 4));
+        Assert.assertTrue(waitForElementsToCount(
+                By.xpath(errorMessageLocator.replace("message", "The field is required.")), 4));
     }
 
     public void uploadCv() {
@@ -46,37 +59,59 @@ public class ApplyForPage extends PageObject {
         waitForElementsToBeClickable(cvLocator);
         getElement().click();
 
+        // Static time wait strategy (Not good)
         Setup.waitTime(2);
 
-        Setup.getActions().sendKeys(Keys.ESCAPE);
+        // Work around for Robot to upload file
+        getRobot().keyPress(KeyEvent.VK_ESCAPE);
+        getRobot().keyRelease(KeyEvent.VK_ESCAPE);
 
+        // Static time wait strategy (Not good)
         Setup.waitTime(2);
 
-        getElement().sendKeys("fakeFile.pdf");
-
-        Setup.waitTime(5);
+        getElement().sendKeys(fakeCV);
     }
 
     public void wrongFormatFieldsTest() {
         waitForElementAndSet(emailLocator);
         sendKeysToInput(getFaker().phoneNumber().phoneNumber(), emailLocator);
 
-        waitForElementAndSet(sendBtnLocator);
-        waitForElementsToBeClickable(sendBtnLocator);
-        getElement().click();
+        clickSendBtn();
 
         waitForElementAndSet(errorsOnFormLocator);
 
         // Keeps on adding nodes to the DOM
-        Assert.assertTrue(waitForElementsToCount(By.xpath(errorMessageLocator), 7));
+        Assert.assertTrue(waitForElementsToCount(By.xpath(
+                errorMessageLocator.replace("message", "The field is required.")), 7));
 
-        errorMessageLocator = errorMessageLocator.replace("The field is required.",
-                "The e-mail address entered is invalid.");
+        clickCloseBtn();
 
+        Assert.assertTrue(waitForElementsToCount(By.xpath(errorMessageLocator.replace("message",
+                "The e-mail address entered is invalid.")), 1));
+    }
+
+    private void clickSendBtn() {
+        waitForElementAndSet(sendBtnLocator);
+        waitForElementsToBeClickable(sendBtnLocator);
+        getElement().click();
+    }
+
+    private void clickCloseBtn() {
         waitForElementAndSet(closeBtnLocator);
         waitForElementsToBeClickable(closeBtnLocator);
         getElement().click();
+    }
 
-        Assert.assertTrue(waitForElementsToCount(By.xpath(errorMessageLocator), 1));
+    public boolean uploadCVAndSend() {
+        uploadCv();
+
+        clickSendBtn();
+
+        return true;
+    }
+
+    public boolean verifyErrorMessages() {
+        finalChecks();
+        return true;
     }
 }

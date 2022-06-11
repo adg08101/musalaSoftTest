@@ -2,10 +2,12 @@ package core.musala.index;
 
 import io.cucumber.java.en.When;
 
+import java.awt.*;
+
 public class IndexStepDefinition {
     IndexStep indexStep;
 
-    public IndexStepDefinition() {
+    public IndexStepDefinition() throws AWTException {
         indexStep = new IndexStep();
     }
 

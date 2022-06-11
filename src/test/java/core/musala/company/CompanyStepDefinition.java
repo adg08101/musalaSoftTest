@@ -3,10 +3,12 @@ package core.musala.company;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
+import java.awt.*;
+
 public class CompanyStepDefinition {
     private CompanyStep companyStep;
 
-    public CompanyStepDefinition() {
+    public CompanyStepDefinition() throws AWTException {
         companyStep = new CompanyStep();
     }
 

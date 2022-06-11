@@ -4,10 +4,13 @@ import general.PageObject;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
+import java.awt.*;
+
 public class ExperiencedAutomationQaEngineerPage extends PageObject {
     private final By headerLocator = By.xpath("//h1[text()='Automation QA Engineer']");
 
-    public ExperiencedAutomationQaEngineerPage() {
+    public ExperiencedAutomationQaEngineerPage() throws AWTException {
+        super();
         setUrlPath("https://www.musala.com/job/experienced-automation-qa-engineer/");
     }
 

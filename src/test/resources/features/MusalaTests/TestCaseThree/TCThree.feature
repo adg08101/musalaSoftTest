@@ -38,6 +38,8 @@ Feature: TEST CASE 3
     And Verify that 'Apply' button is present
     Then Click 'Apply' button
     Then Prepare a few sets of negative data
+    And Upload a CV document and click Send
+    Then Verify shown error messages
 
     Examples:
       | location | name                   |

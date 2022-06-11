@@ -4,12 +4,13 @@ import core.musala.index.IndexStep;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 
+import java.awt.*;
 import java.util.Arrays;
 
 public class GeneralSteps extends PageObject {
     private IndexStep indexStep;
 
-    public GeneralSteps() {
+    public GeneralSteps() throws AWTException {
         super();
         setIndexStep(new IndexStep());
     }

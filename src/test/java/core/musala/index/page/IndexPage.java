@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.awt.*;
 import java.util.Locale;
 
 public class IndexPage extends PageObject {
@@ -24,7 +25,7 @@ public class IndexPage extends PageObject {
     private String view = "Musala Index";
     private String title = "Musala Soft";
 
-    public IndexPage() {
+    public IndexPage() throws AWTException {
         super();
 
         setView(this.view);

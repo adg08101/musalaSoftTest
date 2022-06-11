@@ -3,10 +3,12 @@ package core.musala.contact;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.awt.*;
+
 public class ContactStepDefinition {
     ContactStep contactStep;
 
-    public ContactStepDefinition() {
+    public ContactStepDefinition() throws AWTException {
         contactStep = new ContactStep();
     }
 

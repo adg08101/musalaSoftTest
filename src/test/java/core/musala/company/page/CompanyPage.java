@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 
+import java.awt.*;
+
 public class CompanyPage extends PageObject {
     private final String url = "https://www.musala.com/company/";
     private final By h1Locator = By.xpath("//h1[text()='WE ARE MUSALA SOFT']");
@@ -15,6 +17,9 @@ public class CompanyPage extends PageObject {
             "//a[@role='button' and @data-cli_action='accept_all']"));
     private final WebElement acceptCookiesBtn = getWebElement(By.xpath("//a[@id='wt-cli-accept-all-btn']"));
     private final String facebookUrl = "https://www.facebook.com/MusalaSoft?fref=ts";
+
+    public CompanyPage() throws AWTException {
+    }
 
     public boolean verifyPage() {
         waitForElementAndSet(h1Locator);

@@ -5,11 +5,16 @@ import general.Setup;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
+import java.awt.*;
+
 public class CareerPage extends PageObject {
     private final By pageH1Locator = By.xpath("//h1[text()='Careers']");
     private final String url = "https://www.musala.com/careers/";
     private final By checkOpenPositionsBtn = By.xpath("//span[text()='Check our open positions']/ancestor::button");
     private String positionsLabel = "//h2[text()='position']";
+
+    public CareerPage() throws AWTException {
+    }
 
     private void verifyPage() {
         waitForElementAndSet(pageH1Locator);

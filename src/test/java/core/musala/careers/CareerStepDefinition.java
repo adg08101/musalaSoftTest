@@ -3,10 +3,12 @@ package core.musala.careers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
+import java.awt.*;
+
 public class CareerStepDefinition {
     private CareerStep careerStep;
 
-    public CareerStepDefinition() {
+    public CareerStepDefinition() throws AWTException {
         careerStep = new CareerStep();
     }
 

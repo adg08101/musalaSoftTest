@@ -3,8 +3,13 @@ package core.musala.contact.page;
 import general.PageObject;
 import org.openqa.selenium.By;
 
+import java.awt.*;
+
 public class ContactPage extends PageObject {
     private final By subjectLocator = By.xpath("//input[@name='your-subject']");
+
+    public ContactPage() throws AWTException {
+    }
 
     public boolean fillAllFieldsNotEmail() {
         try {

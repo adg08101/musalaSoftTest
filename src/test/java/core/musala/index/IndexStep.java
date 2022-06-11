@@ -3,10 +3,12 @@ package core.musala.index;
 import core.musala.index.page.IndexPage;
 import org.junit.Assert;
 
+import java.awt.*;
+
 public class IndexStep {
     private final IndexPage indexPage;
 
-    public IndexStep() {
+    public IndexStep() throws AWTException {
         this.indexPage = new IndexPage();
     }
 

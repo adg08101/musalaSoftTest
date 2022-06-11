@@ -5,10 +5,12 @@ import general.Property;
 import general.Setup;
 import org.junit.Assert;
 
+import java.awt.*;
+
 public class ContactStep {
     private ContactPage contactPage;
 
-    public ContactStep() {
+    public ContactStep() throws AWTException {
         contactPage = new ContactPage();
     }
 

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.util.List;
 
 public class PageObject {
@@ -37,12 +38,14 @@ public class PageObject {
     public final By errorsOnFormLocator =
             By.xpath("//div[text()='One or more fields have an error. Please check and try again.']");
     public String errorMessageLocator = "//span[text()='message']";
+    private Robot robot;
 
-    public PageObject() {
+    public PageObject() throws AWTException {
         setFaker(new Faker());
         PageFactory.initElements(this.getDriver(), this);
         setWaitTime((Integer) Setup.getConfigProperties().getProperties().get(Property.TIMEOUT_IMPLICIT_VALUE));
         setWait(new WebDriverWait(this.getDriver(), getWaitTime()));
+        setRobot(new Robot());
     }
 
     public boolean logoff(String[] logoffItems) {
@@ -339,5 +342,13 @@ public class PageObject {
     public WebElement getWhatWeOfferSection() {
         waitForElementAndSet(whatWeOfferSectionLocator);
         return getElement();
+    }
+
+    public Robot getRobot() {
+        return robot;
+    }
+
+    public void setRobot(Robot robot) {
+        this.robot = robot;
     }
 }
