@@ -4,15 +4,7 @@ import general.PageObject;
 import org.openqa.selenium.By;
 
 public class ContactPage extends PageObject {
-    private final By nameLocator = By.xpath("//input[@name='your-name']");
-    private final By emailLocator = By.xpath("//input[@name='your-email']");
-    private final By mobileLocator = By.xpath("//input[@name='mobile-number']");
     private final By subjectLocator = By.xpath("//input[@name='your-subject']");
-    private final By messageLocator = By.xpath("//textarea[@name='your-message']");
-    private final By sendBtnLocator = By.xpath("//input[@type='submit']");
-    private final By errorsOnFormLocator =
-            By.xpath("//div[text()='One or more fields have an error. Please check and try again.']");
-    private String errorMessageLocator = "//span[text()='message']";
 
     public boolean fillAllFieldsNotEmail() {
         try {

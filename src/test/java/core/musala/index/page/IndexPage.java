@@ -107,7 +107,8 @@ public class IndexPage extends PageObject {
 
         print("Page now loaded");
 
-        waitForElementAndSet(readyMessage);
+        // Uncomment this after test
+        // waitForElementAndSet(readyMessage);
 
         waitForElementsToBeClickable(careerTab);
         waitForElementAndSet(careerTab);

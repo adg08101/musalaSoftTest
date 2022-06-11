@@ -24,11 +24,19 @@ public class PageObject {
     private final By generalDescriptionSectionLocator =
             By.xpath("//h2[text()='General description']");
     private final By requirementsSectionLocator =
-            By.xpath("//h2[text()='Requirements']");;
+            By.xpath("//h2[text()='Requirements']");
     private final By responsibilitiesSectionLocator =
-            By.xpath("//h2[text()='Responsibilities']");;
+            By.xpath("//h2[text()='Responsibilities']");
     private final By whatWeOfferSectionLocator =
-            By.xpath("//h2[text()='What we offer']");;
+            By.xpath("//h2[text()='What we offer']");
+    public final By nameLocator = By.xpath("//input[@name='your-name']");
+    public final By emailLocator = By.xpath("//input[@name='your-email']");
+    public final By mobileLocator = By.xpath("//input[@name='mobile-number']");
+    public final By messageLocator = By.xpath("//textarea[@name='your-message']");
+    public final By sendBtnLocator = By.xpath("//input[@type='submit']");
+    public final By errorsOnFormLocator =
+            By.xpath("//div[text()='One or more fields have an error. Please check and try again.']");
+    public String errorMessageLocator = "//span[text()='message']";
 
     public PageObject() {
         setFaker(new Faker());
@@ -54,7 +62,12 @@ public class PageObject {
         setElement(getWebElement(elementLocator));
     }
 
-    public  void waitForElementVisibility(By elementLocator) {
+    public boolean waitForElementsToCount(By elementLocator, int count) {
+        getWait().until(ExpectedConditions.numberOfElementsToBe(elementLocator, count));
+        return getWebElements(elementLocator).size() == count;
+    }
+
+    public void waitForElementVisibility(By elementLocator) {
         getWait().until(ExpectedConditions.visibilityOf(element));
     }
 

@@ -31,7 +31,7 @@ public class ExperiencedAutomationQaEngineerPage extends PageObject {
 
     public boolean verifyButton(String text) {
         waitForElementAndSet(By.xpath("//input[@type='button' and @value='" + text + "']"));
-        return getWhatWeOfferSection().isDisplayed();
+        return getElement().isDisplayed();
     }
 
     public boolean clickButton(String button) {

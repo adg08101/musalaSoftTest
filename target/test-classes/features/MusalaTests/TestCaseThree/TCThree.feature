@@ -37,6 +37,7 @@ Feature: TEST CASE 3
     Then Verify that main sections are shown
     And Verify that 'Apply' button is present
     Then Click 'Apply' button
+    Then Prepare a few sets of negative data
 
     Examples:
       | location | name                   |
