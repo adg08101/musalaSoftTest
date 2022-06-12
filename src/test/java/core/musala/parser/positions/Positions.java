@@ -1,14 +1,16 @@
 package core.musala.parser.positions;
 
-import general.AttributeType;
-
+import java.util.LinkedList;
 import java.util.List;
 
 public class Positions {
-    private Position position;
-    private List<Position> positions;
+    private static final List<Position> positions = new LinkedList<>();
 
-    public Positions(AttributeType attribute, String position, String info) {
-        this.position = new Position(attribute, position, info);
+    public static void addPosition(String location, String position, String info) {
+        getPositions().add(new Position(location, position, info));
+    }
+
+    public static List<Position> getPositions() {
+        return positions;
     }
 }

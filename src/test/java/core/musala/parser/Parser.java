@@ -1,14 +1,15 @@
 package core.musala.parser;
 
 import core.musala.parser.positions.Positions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Parser {
-    private Positions position;
+    public static void Parse(WebElement element) {
+        String location = element.findElement(By.xpath(".//p[@class='card-jobsHot__location']")).getText();
+        String position = element.findElement(By.xpath(".//h2[@class='card-jobsHot__title']")).getText();
+        String moreInfo = element.getAttribute("href");
 
-    public Parser(WebElement element) {
-        System.out.println("----------------");
-        System.out.println(element.getAttribute("innerHTML"));
-        System.out.println("----------------");
+        Positions.addPosition(location, position, moreInfo);
     }
 }

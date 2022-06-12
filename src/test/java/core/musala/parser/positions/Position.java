@@ -1,24 +1,14 @@
 package core.musala.parser.positions;
 
-import general.AttributeType;
-
 public class Position {
-    private AttributeType attributeType;
+    private String location;
     private String position;
     private String info;
 
-    public Position(AttributeType attribute, String position, String info) {
-        setAttributeType(attribute);
+    public Position(String location, String position, String info) {
+        setLocation(location);
         setPosition(position);
         setInfo(info);
-    }
-
-    public AttributeType getAttributeType() {
-        return attributeType;
-    }
-
-    public void setAttributeType(AttributeType attributeType) {
-        this.attributeType = attributeType;
     }
 
     public String getPosition() {
@@ -35,5 +25,13 @@ public class Position {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

@@ -18,4 +18,12 @@ public class JoinUsStep {
     public void selectLocation(String location) {
         Assert.assertTrue(joinUsPage.selectLocation(location));
     }
+
+    public void getPositions(String location) {
+        Assert.assertTrue(joinUsPage.getPositions(location));
+    }
+
+    public void printInTheConsole() {
+        Assert.assertTrue(joinUsPage.printPositions());
+    }
 }

@@ -362,6 +362,10 @@ public class PageObject {
         return getElement();
     }
 
+    public void consoleLog(String message) {
+        Setup.getJsExecutor().executeScript("console.log('" + message +"');");
+    }
+
     public Robot getRobot() {
         return robot;
     }

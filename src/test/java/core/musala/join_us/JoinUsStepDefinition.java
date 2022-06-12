@@ -20,4 +20,14 @@ public class JoinUsStepDefinition {
     public void fromTheDropdownSelectLocationSelect(String location) {
         joinUsStep.selectLocation(location);
     }
+
+    @And("Get the open positions by {string}")
+    public void getTheOpenPositionsByCity(String location) {
+        joinUsStep.getPositions(location);
+    }
+
+    @Then("Print in the console the list with available positions")
+    public void printInTheConsoleTheListWithAvailablePositions() {
+        joinUsStep.printInTheConsole();
+    }
 }

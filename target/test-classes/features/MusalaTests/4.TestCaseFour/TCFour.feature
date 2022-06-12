@@ -31,8 +31,11 @@ Feature: TEST CASE 4
     Then Click Check our open positions button
     And Verify that Join Us page is opened
     Then From the dropdown Select location select "<location>"
+    And Get the open positions by "<location>"
+    Then From the dropdown Select location select "<locationTwo>"
+    And Get the open positions by "<locationTwo>"
+    Then Print in the console the list with available positions
 
     Examples:
-      | location |
-      | Sofia    |
-      # | Skopje   |
+      | location | locationTwo |
+      | Sofia    | Skopje      |

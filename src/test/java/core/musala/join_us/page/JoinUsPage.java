@@ -1,9 +1,13 @@
 package core.musala.join_us.page;
 
+import core.musala.parser.Parser;
+import core.musala.parser.positions.Position;
+import core.musala.parser.positions.Positions;
 import general.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 
@@ -36,19 +40,35 @@ public class JoinUsPage extends PageObject {
         }
 
         verifyPage();
-        printResult();
 
         return true;
     }
 
-    private void printResult() {
-        print("Give me some!!");
+    public boolean getPositions(String location) {
+        setElements(getDriver().findElements(
+                By.xpath("//article[contains(@class, 'card-jobsHot')]/descendant::p[@class='card-jobsHot__location'and " +
+                        "contains(text(), '" + location + "' or text()='Anywhere')]/ancestor::a")));
 
-        print("Give me some positions offers!!");
+        for (WebElement position: getElements())
+            Parser.Parse(position);
 
-        print("Follow this hint for tomorrow, to much rum...");
+        return true;
+    }
 
-        // TODO Follow hint
-        print("//article[contains(@class, 'card-jobsHot')]/descendant::p[@class='card-jobsHot__location'and text()='Sofia']");
+    public boolean printPositions() {
+        String location = "";
+
+        for (Position position: Positions.getPositions()
+             ) {
+            if (!position.getLocation().equals(location)) {
+                consoleLog(position.getLocation());
+                location = position.getLocation();
+            }
+
+            consoleLog("Position: " + position.getPosition());
+            consoleLog("More info: " + position.getInfo());
+        }
+
+        return true;
     }
 }
