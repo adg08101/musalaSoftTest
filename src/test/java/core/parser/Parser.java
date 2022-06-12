@@ -1,6 +1,6 @@
-package core.musala.parser;
+package core.parser;
 
-import core.musala.parser.positions.Positions;
+import core.parser.positions.Positions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

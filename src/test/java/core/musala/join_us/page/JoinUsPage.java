@@ -1,8 +1,8 @@
 package core.musala.join_us.page;
 
-import core.musala.parser.Parser;
-import core.musala.parser.positions.Position;
-import core.musala.parser.positions.Positions;
+import core.parser.Parser;
+import core.parser.positions.Position;
+import core.parser.positions.Positions;
 import general.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

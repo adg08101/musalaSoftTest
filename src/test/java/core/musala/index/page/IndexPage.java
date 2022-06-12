@@ -104,18 +104,15 @@ public class IndexPage extends PageObject {
     }
 
     public boolean clickCareersTab() {
-        // TODO: Uncomment this after test
-        /*
         while (!isPageReady()) {
             Setup.waitTime(5);
             print("Page still not loaded");
             clickCareersTab();
-        }*/
+        }
 
         print("Page now loaded");
 
-        // TODO: Uncomment this after test
-        // waitForElementAndSet(readyMessage);
+        waitForElementAndSet(readyMessage);
 
         waitForElementsToBeClickable(careerTab);
         waitForElementAndSet(careerTab);

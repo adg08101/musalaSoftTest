@@ -1,4 +1,4 @@
-package core.musala.parser.positions;
+package core.parser.positions;
 
 public class Position {
     private String location;

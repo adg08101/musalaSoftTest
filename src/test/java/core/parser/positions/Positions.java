@@ -1,4 +1,4 @@
-package core.musala.parser.positions;
+package core.parser.positions;
 
 import java.util.LinkedList;
 import java.util.List;
