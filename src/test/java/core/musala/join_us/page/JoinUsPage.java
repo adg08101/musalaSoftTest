@@ -12,6 +12,7 @@ public class JoinUsPage extends PageObject {
             By.xpath("//img[@src='https://www.musala.com/wp-content/uploads/2020/11/join_us_from_anywhere_header.jpg']");
     private final String url = "https://www.musala.com/careers/join-us/";
     private final By locationSelectorLocator = By.id("get_location");
+    private final By scrollContainer = By.xpath("html");
 
     public JoinUsPage() throws AWTException {
     }
@@ -42,5 +43,12 @@ public class JoinUsPage extends PageObject {
 
     private void printResult() {
         print("Give me some!!");
+
+        print("Give me some positions offers!!");
+
+        print("Follow this hint for tomorrow, to much rum...");
+
+        // TODO Follow hint
+        print("//article[contains(@class, 'card-jobsHot')]/descendant::p[@class='card-jobsHot__location'and text()='Sofia']");
     }
 }
