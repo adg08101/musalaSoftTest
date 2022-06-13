@@ -7,10 +7,7 @@ import java.awt.*;
 
 public class FacebookPage extends PageObject {
     private final By facebookImageLocator =
-            By.xpath(
-                    "//a[@href=" +
-                            "\"https://www.facebook.com/MusalaSoft/photos/" +
-                            "a.152166551470703/3926723730681614/?__tn__=%3C\"]");
+            By.xpath("//img[@data-imgperflogname='profileCoverPhoto' and @src]");
     private final String url = "https://www.facebook.com/MusalaSoft?fref=ts";
 
     public FacebookPage() throws AWTException {

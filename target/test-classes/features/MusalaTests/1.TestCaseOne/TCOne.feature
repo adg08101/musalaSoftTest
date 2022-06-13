@@ -31,6 +31,7 @@ Feature: TEST CASE 1
     Examples:
       | pageAnchor | wrongEmail    |
       | ContactUs  | badEmailOne   |
+      # Uncomment following lines to play test 5 times
       # | ContactUs  | badEmailOne   |
       # | ContactUs  | badEmailOne   |
       # | ContactUs  | badEmailOne   |

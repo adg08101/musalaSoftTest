@@ -4,6 +4,7 @@ import core.parser.Parser;
 import core.parser.positions.Position;
 import core.parser.positions.Positions;
 import general.PageObject;
+import general.Setup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -45,12 +46,16 @@ public class JoinUsPage extends PageObject {
     }
 
     public boolean getPositions(String location) {
-        setElements(getDriver().findElements(
-                By.xpath("//article[contains(@class, 'card-jobsHot')]/descendant::p[@class='card-jobsHot__location'and " +
-                        "contains(text(), '" + location + "' or text()='Anywhere')]/ancestor::a")));
+        waitForElementsAndSet(By.xpath("//article[contains(@class, " +
+                "'card-jobsHot')]/descendant::p[@class='card-jobsHot__location'and " +
+                        "contains(text(), '" + location + "') or text()='Anywhere']/ancestor::a"));
 
         for (WebElement position: getElements())
             Parser.Parse(position);
+
+        // Safety net to wait for elements processing
+        // Mostly FireFox takes longer to process
+        Setup.waitTime(10);
 
         return true;
     }
@@ -68,6 +73,10 @@ public class JoinUsPage extends PageObject {
             consoleLog("Position: " + position.getPosition());
             consoleLog("More info: " + position.getInfo());
         }
+
+        openConsole();
+
+        Setup.waitTime(20);
 
         return true;
     }

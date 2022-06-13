@@ -4,9 +4,7 @@ import general.PageObject;
 import general.Property;
 import general.Setup;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.awt.*;
 import java.util.Locale;
@@ -104,14 +102,7 @@ public class IndexPage extends PageObject {
     }
 
     public boolean clickCareersTab() {
-        while (!isPageReady()) {
-            Setup.waitTime(5);
-            print("Page still not loaded");
-            clickCareersTab();
-        }
-
-        print("Page now loaded");
-
+        // Work around for less time to load
         waitForElementAndSet(readyMessage);
 
         waitForElementsToBeClickable(careerTab);
@@ -121,9 +112,9 @@ public class IndexPage extends PageObject {
 
         // Work around as safety net
         try {
-            getElement().click();
             getDriver().get(getElement().getAttribute("href"));
-        } catch (StaleElementReferenceException e) {
+        } catch (StaleElementReferenceException | ElementNotInteractableException |
+                ScriptTimeoutException e) {
             print("StaleElementReferenceException");
         }
 

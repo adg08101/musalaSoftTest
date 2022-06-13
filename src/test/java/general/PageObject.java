@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.Locale;
 
 public class PageObject {
     private String urlPath;
@@ -78,9 +79,29 @@ public class PageObject {
         getRobot().keyRelease(key);
     }
 
+    public void openConsole() {
+        switch (Setup.getBrowser().toLowerCase(Locale.ROOT)) {
+            case "chrome":
+                getRobot().keyPress(KeyEvent.VK_CONTROL);
+                getRobot().keyPress(KeyEvent.VK_SHIFT);
+                pressKey(KeyEvent.VK_J);
+                getRobot().keyRelease(KeyEvent.VK_SHIFT);
+                getRobot().keyRelease(KeyEvent.VK_CONTROL);
+                break;
+            default:
+                pressKey(KeyEvent.VK_F12);
+                break;
+        }
+    }
+
     public void waitForElementAndSet(By elementLocator) {
         getWait().until(ExpectedConditions.presenceOfElementLocated(elementLocator));
         setElement(getWebElement(elementLocator));
+    }
+
+    public void waitForElementsAndSet(By elementLocator) {
+        getWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(elementLocator));
+        setElements(getWebElements(elementLocator));
     }
 
     public boolean waitForElementsToCount(By elementLocator, int count) {
@@ -339,7 +360,12 @@ public class PageObject {
     }
 
     public boolean isPageReady() {
-        return Setup.getJsExecutor().executeScript("return document.readyState;").equals("complete");
+        try {
+            return Setup.getJsExecutor().executeScript("return document.readyState;").equals("complete");
+        } catch (ScriptTimeoutException e) {
+            print("ScriptTimeoutException");
+        }
+        return true;
     }
 
     public WebElement getGeneralDescriptionSection() {

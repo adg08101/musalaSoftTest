@@ -30,6 +30,7 @@ public final class Setup {
     private static Map<String, Object> timeouts;
     private static InputStream input;
     private static Properties properties;
+    private static String browser;
 
     public static FirefoxOptions getFirefoxOptions() {
         return firefoxOptions;
@@ -54,9 +55,9 @@ public final class Setup {
         setStore(new HashMap<>());
         loadDefaultProperties();
 
-        String browser = (String) Setup.getPropertyFromKey(Property.BROWSER);
+        setBrowser((String) Setup.getPropertyFromKey(Property.BROWSER));
 
-        switch (browser.toLowerCase(Locale.ROOT)) {
+        switch (getBrowser().toLowerCase(Locale.ROOT)) {
             case "chrome":
                 applyChromeConfigurations();
                 break;
@@ -238,5 +239,13 @@ public final class Setup {
     public void close() {
         waitTime(2);
         getDriver().close();
+    }
+
+    public static String getBrowser() {
+        return browser;
+    }
+
+    public void setBrowser(String browser) {
+        this.browser = browser;
     }
 }
