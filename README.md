@@ -8,6 +8,8 @@
 ### Or use alternatives
 # Parallel feature running
 ### Supported natively by Cucumber V 7.0
+# Faker Java Class
+### Faker class for Data Testing available
 # Cucumber reporting
 ### Configured by Local Environment Variables
 ###### adg08101@gmail.com June 2022
